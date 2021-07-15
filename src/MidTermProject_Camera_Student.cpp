@@ -107,12 +107,7 @@ int main(int argc, const char *argv[])
         {
             for (auto it = keypoints.begin(); it != keypoints.end(); it++)
             {
-                int x = (int)(it->pt).x;
-                int y = (int)(it->pt).y;
-                if ((x >= vehicleRect.x && (x < vehicleRect.x + vehicleRect.width)) && (y >= vehicleRect.y && (y < vehicleRect.y + vehicleRect.height))){
-                    // Do nothing
-                }
-                else{
+                if (!vehicleRect.contains(it->pt)){
                     // Remove keypoint
                     keypoints.erase(it--);
                 }
